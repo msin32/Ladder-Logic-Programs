@@ -1,0 +1,184 @@
+{
+  "id": "program-1794454690394",
+  "name": "Untitled Ladder Program",
+  "version": 1,
+  "tags": [
+    {
+      "name": "PART_SENSOR",
+      "type": "BOOL",
+      "category": "input",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "RESET_PB",
+      "type": "BOOL",
+      "category": "input",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "BATCH_DONE",
+      "type": "BOOL",
+      "category": "output",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "PART_COUNT",
+      "type": "COUNTER",
+      "category": "internal",
+      "description": "",
+      "initialValue": 0
+    }
+  ],
+  "rungs": [
+    {
+      "id": "rung-1794454699980-gbbke5",
+      "comment": "COUNTER",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "PART_SENSOR"
+        },
+        {
+          "kind": "counter",
+          "counterType": "CTU",
+          "tag": "PART_COUNT",
+          "preset": 5
+        }
+      ]
+    },
+    {
+      "id": "rung-1794455087220-8p70hf",
+      "comment": "RESET",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "RESET_PB"
+        },
+        {
+          "kind": "branch",
+          "paths": [
+            [
+              {
+                "kind": "res",
+                "tag": "PART_COUNT"
+              }
+            ],
+            [
+              {
+                "kind": "coil",
+                "coilType": "OTU",
+                "tag": "BATCH_DONE"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rung-1794455126884-32p8yj",
+      "comment": "DONE",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "PART_COUNT.Done"
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTL",
+          "tag": "BATCH_DONE"
+        }
+      ]
+    }
+  ],
+  "hmiLayout": [
+    {
+      "id": "widget-1794454727700-c27n7q",
+      "type": "pushbutton",
+      "position": {
+        "x": 460,
+        "y": 100
+      },
+      "size": {
+        "width": 80,
+        "height": 86
+      },
+      "bindings": {
+        "tag": "PART_SENSOR"
+      },
+      "config": {
+        "mode": "momentary",
+        "color": "blue",
+        "label": "PART"
+      }
+    },
+    {
+      "id": "widget-1794454732757-c1teta",
+      "type": "indicator-light",
+      "position": {
+        "x": 560,
+        "y": 200
+      },
+      "size": {
+        "width": 80,
+        "height": 80
+      },
+      "bindings": {
+        "tag": "BATCH_DONE"
+      },
+      "config": {
+        "activeColor": "green",
+        "inactiveColor": "gray",
+        "label": "BATCH DONE"
+      }
+    },
+    {
+      "id": "widget-1794454782956-d929vj",
+      "type": "pushbutton",
+      "position": {
+        "x": 560,
+        "y": 100
+      },
+      "size": {
+        "width": 80,
+        "height": 86
+      },
+      "bindings": {
+        "tag": "RESET_PB"
+      },
+      "config": {
+        "mode": "momentary",
+        "color": "yellow",
+        "label": "RESET"
+      }
+    },
+    {
+      "id": "widget-1794454838863-ffionv",
+      "type": "numeric-display",
+      "position": {
+        "x": 440,
+        "y": 200
+      },
+      "size": {
+        "width": 120,
+        "height": 60
+      },
+      "bindings": {
+        "value": "PART_COUNT.Accumulated"
+      },
+      "config": {
+        "label": "Counted",
+        "displayType": "decimal",
+        "decimalPlaces": 0,
+        "decimalOffset": 0,
+        "unitCategory": "none",
+        "unit": ""
+      }
+    }
+  ]
+}
