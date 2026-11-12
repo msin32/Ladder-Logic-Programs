@@ -1,0 +1,168 @@
+{
+  "id": "program-1794384704451",
+  "name": "Untitled Ladder Program",
+  "version": 1,
+  "tags": [
+    {
+      "name": "sw1",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "light1",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "sw2",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "br2",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "br1",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "motor",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "seal",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "sealsw",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "start",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "stop",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    }
+  ],
+  "rungs": [
+    {
+      "id": "rung-1794384707123-311pto",
+      "comment": "basic light switch",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "sw1"
+        },
+        {
+          "kind": "branch",
+          "paths": [
+            [
+              {
+                "kind": "contact",
+                "contactType": "XIC",
+                "tag": "sw2"
+              },
+              {
+                "kind": "contact",
+                "contactType": "XIO",
+                "tag": "br2"
+              }
+            ],
+            [
+              {
+                "kind": "contact",
+                "contactType": "XIO",
+                "tag": "br1"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTE",
+          "tag": "light1"
+        }
+      ]
+    },
+    {
+      "id": "rung-1794384818314-4uar7n",
+      "comment": "seal in",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "start"
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTL",
+          "tag": "seal"
+        }
+      ]
+    },
+    {
+      "id": "rung-1794386181738-2j09ge",
+      "comment": "seal out",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "stop"
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTU",
+          "tag": "seal"
+        }
+      ]
+    },
+    {
+      "id": "rung-1794386093820-4ihip7",
+      "comment": "motor",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "seal"
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTE",
+          "tag": "motor"
+        }
+      ]
+    }
+  ],
+  "hmiLayout": []
+}

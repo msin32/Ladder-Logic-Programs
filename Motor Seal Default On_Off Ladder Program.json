@@ -1,0 +1,150 @@
+{
+  "id": "program-1794386571241",
+  "name": "Untitled Ladder Program",
+  "version": 1,
+  "tags": [
+    {
+      "name": "offBtn",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "onBtn",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "motor",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "motor2",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "motor3",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    }
+  ],
+  "rungs": [
+    {
+      "id": "rung-1794386573163-js5tf7",
+      "comment": "seal - off default",
+      "elements": [
+        {
+          "kind": "branch",
+          "paths": [
+            [
+              {
+                "kind": "contact",
+                "contactType": "XIC",
+                "tag": "onBtn"
+              }
+            ],
+            [
+              {
+                "kind": "contact",
+                "contactType": "XIO",
+                "tag": "offBtn"
+              },
+              {
+                "kind": "contact",
+                "contactType": "XIC",
+                "tag": "motor"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTE",
+          "tag": "motor"
+        }
+      ]
+    },
+    {
+      "id": "rung-1794387028933-6izbup",
+      "comment": " seal on default",
+      "elements": [
+        {
+          "kind": "branch",
+          "paths": [
+            [
+              {
+                "kind": "contact",
+                "contactType": "XIO",
+                "tag": "motor2"
+              },
+              {
+                "kind": "contact",
+                "contactType": "XIO",
+                "tag": "onBtn"
+              }
+            ],
+            [
+              {
+                "kind": "contact",
+                "contactType": "XIC",
+                "tag": "offBtn"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "coil",
+          "coilType": "NEG",
+          "tag": "motor2"
+        }
+      ]
+    },
+    {
+      "id": "rung-1794388182968-u9s8q6",
+      "comment": "We need two negations or else it will oscillate",
+      "elements": [
+        {
+          "kind": "branch",
+          "paths": [
+            [
+              {
+                "kind": "contact",
+                "contactType": "XIC",
+                "tag": "onBtn"
+              }
+            ],
+            [
+              {
+                "kind": "contact",
+                "contactType": "XIO",
+                "tag": "offBtn"
+              },
+              {
+                "kind": "contact",
+                "contactType": "XIO",
+                "tag": "motor3"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTE",
+          "tag": "motor3"
+        }
+      ]
+    }
+  ],
+  "hmiLayout": []
+}
