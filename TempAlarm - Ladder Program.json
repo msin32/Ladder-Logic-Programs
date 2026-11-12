@@ -1,0 +1,132 @@
+{
+  "id": "program-1794474283134",
+  "name": "Untitled Ladder Program",
+  "version": 1,
+  "tags": [
+    {
+      "name": "ALARM",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "FAULT",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "TEMP_HIGH",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    },
+    {
+      "name": "ACK",
+      "type": "BOOL",
+      "category": "internal",
+      "description": "",
+      "initialValue": false
+    }
+  ],
+  "rungs": [
+    {
+      "id": "rung-1794474284485-pf4k4c",
+      "comment": "",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "TEMP_HIGH"
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTL",
+          "tag": "FAULT"
+        }
+      ]
+    },
+    {
+      "id": "rung-1794474293004-p5ffow",
+      "comment": "",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "ACK"
+        },
+        {
+          "kind": "contact",
+          "contactType": "XIO",
+          "tag": "TEMP_HIGH"
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTU",
+          "tag": "FAULT"
+        }
+      ]
+    },
+    {
+      "id": "rung-1794474322661-rmn9u4",
+      "comment": "",
+      "elements": [
+        {
+          "kind": "contact",
+          "contactType": "XIC",
+          "tag": "FAULT"
+        },
+        {
+          "kind": "coil",
+          "coilType": "OTE",
+          "tag": "ALARM"
+        }
+      ]
+    }
+  ],
+  "hmiLayout": [
+    {
+      "id": "widget-1794474740280-2gtzz9",
+      "type": "pushbutton",
+      "position": {
+        "x": 360,
+        "y": 160
+      },
+      "size": {
+        "width": 80,
+        "height": 80
+      },
+      "bindings": {
+        "tag": "ACK"
+      },
+      "config": {
+        "mode": "momentary",
+        "color": "green",
+        "label": "ACK"
+      }
+    },
+    {
+      "id": "widget-1794474742837-zw75k4",
+      "type": "indicator-light",
+      "position": {
+        "x": 540,
+        "y": 160
+      },
+      "size": {
+        "width": 60,
+        "height": 60
+      },
+      "bindings": {
+        "tag": "ALARM"
+      },
+      "config": {
+        "activeColor": "green",
+        "inactiveColor": "gray",
+        "label": "ALARM"
+      }
+    }
+  ]
+}

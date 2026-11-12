@@ -117,7 +117,7 @@
     },
     {
       "id": "rung-1794384818314-4uar7n",
-      "comment": "seal in",
+      "comment": "set",
       "elements": [
         {
           "kind": "contact",
@@ -133,7 +133,7 @@
     },
     {
       "id": "rung-1794386181738-2j09ge",
-      "comment": "seal out",
+      "comment": "reset",
       "elements": [
         {
           "kind": "contact",
